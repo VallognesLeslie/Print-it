@@ -60,7 +60,7 @@ function updateCarousel() {
 rightArrow.addEventListener('click', () => {//va à l’image suivante
   currentIndex = (currentIndex + 1) % slides.length;  // boucle automatique vers 0 après la dernière
   updateCarousel();
-  //(...) % slides.length si on dépasse la dernière on revient à la 1ere
+  //(...) % slides.length si on dépasse la dernière on revient a la 1ere
 });
 
 /*CLIC FLECHE GAUCHE*/
