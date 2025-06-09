@@ -17,16 +17,17 @@ const slides = [/* tableau d'objet */
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+ 
 
 
 
 /* AJOUT DES FLECHES */
-const leftArrow = document.querySelector('.arrow_left');
-const rightArrow = document.querySelector('.arrow_right');
+const leftArrow = document.getElementsByClassName('arrow_left')[0];
+const rightArrow = document.getElementsByClassName("arrow_right")[0];
 /*ce qui veut dire dans le html, trouve le 1erélément qui à la classe CSS arrow_left/arrow_right*/
 
 /* AJOUT DES BULLETS POINTS */
-const dotsContainer = document.querySelector('#banner .dots');
+const dotsContainer = document.getElementsByClassName("dots")[0];
 /*Dans le document HTML, trouve l’élément qui a la classe dots 
 à l’intérieur de l’élément avec l’id banner et stocke le dans une constante appelé dotsContainer*/
 
@@ -48,9 +49,9 @@ if (index === 0) si je suis sur le premier slide (index === 0), alors je colorie
 dotsContainer.appendChild(dot) ajoute le petit point (dot) a l'endroit prévu dans le HTML (dotsContainer)*/
 
 /*Sélection des éléments après création des points*/
-const bannerImage = document.querySelector('.banner-img');//sélectionne l’image à changer
-const bannerText = document.querySelector('#banner p');//sélectionne le texte a mettre a jour
-const dots = document.querySelectorAll('.dot');//tout les petits point
+const bannerImage = document.getElementsByClassName('banner-img')[0];;//sélectionne l’image à changer => TODO
+const bannerText = document.getElementById('banner').getElementsByTagName('p')[0];//sélectionne le texte a mettre a jour
+const dots = dotsContainer.getElementsByClassName('dot');//tout les petits point => TODO
 
 let currentIndex = 0;//commence a la 1er image, index 0
 
@@ -59,8 +60,8 @@ function updateCarousel() {
   bannerImage.src = `./assets/images/slideshow/${slides[currentIndex].image}`;//bannerImage.src = ... affiche l’image correspondant a currentIndex
   bannerText.innerHTML = slides[currentIndex].tagLine;//bannerText.innerHTML = ... affiche le texte du slide
 
-  dots.forEach(dot => dot.classList.remove('dot_selected'));//dots.forEach(...) enlève la sélection de tous les dots
-  dots[currentIndex].classList.add('dot_selected');//dots[currentIndex].classList.add(...) sélectionne le dot correspondant au slide actuelle
+	Array.from(dots).forEach(dot => dot.classList.remove('dot_selected'));
+  dots[currentIndex].classList.add('dot_selected');
 }
 
 /*CLIC FLECHE DROITE*/
