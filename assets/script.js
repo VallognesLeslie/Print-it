@@ -1,7 +1,8 @@
-const slides = [
+const slides = [/* tableau d'objet */
 	{
 		"image":"slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
+		/*tagline=textehtml */
 	},
 	{
 		"image":"slide2.jpg",
@@ -22,28 +23,34 @@ const slides = [
 /* AJOUT DES FLECHES */
 const leftArrow = document.querySelector('.arrow_left');
 const rightArrow = document.querySelector('.arrow_right');
-//chercher les deux flèches dans le HTM pour pouvoir réagir quand on clique dessus
+/*ce qui veut dire dans le html, trouve le 1erélément qui à la classe CSS arrow_left/arrow_right*/
 
 /* AJOUT DES BULLETS POINTS */
 const dotsContainer = document.querySelector('#banner .dots');
-//sélectionne l’endroit dans le HTML ou on va insérer les petits cercles les "dots"
+/*Dans le document HTML, trouve l’élément qui a la classe dots 
+à l’intérieur de l’élément avec l’id banner et stocke le dans une constante appelé dotsContainer*/
 
 /*DYNAMIQUE DES BULLETS*/
-slides.forEach((_, index) => {
-  const dot = document.createElement('div');
+slides.forEach((_, index) => {/*chaque élément dans le  slides je vais faire quelque chose mais
+je ne me sers pas de l’élément en lui meme _ mais je veux juste utiliser sa position dans le 
+tableau index */
+
+  const dot = document.createElement('div');/*crée un nouvel élément HTML <div> en mémoire 
+  il n’est pas encore visible à l’écran*/
+
+
   dot.classList.add('dot');
   if (index === 0) dot.classList.add('dot_selected');
   dotsContainer.appendChild(dot);
 });
-//slides.forEach(...) on parcourt chaque slide
-//dot.classList.add('dot') on lui donne la classe dot pour le style
-//if (index === 0) si c’est le 1er dot, on le marque comme sélectionner
-//dotsContainer.appendChild(dot) on ajoute ce dot dans le HTML
+/*dot.classList.add('dot') ajoute la classe CSS dot a mon élément dot
+if (index === 0) si je suis sur le premier slide (index === 0), alors je colorie ce point avec la classe dot_selected
+dotsContainer.appendChild(dot) ajoute le petit point (dot) a l'endroit prévu dans le HTML (dotsContainer)*/
 
-/*Sélection des éléments après création des dots*/
+/*Sélection des éléments après création des points*/
 const bannerImage = document.querySelector('.banner-img');//sélectionne l’image à changer
 const bannerText = document.querySelector('#banner p');//sélectionne le texte a mettre a jour
-const dots = document.querySelectorAll('.dot');//tout les petits cercles
+const dots = document.querySelectorAll('.dot');//tout les petits point
 
 let currentIndex = 0;//commence a la 1er image, index 0
 
